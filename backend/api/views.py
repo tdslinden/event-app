@@ -16,7 +16,6 @@ def getEvents(request):
     # outputs as JSON data
     return Response(serializer.data)
 
-
 @api_view(['POST'])
 def addEvent(request):
     serializer = EventSerializer(data=request.data)
@@ -45,5 +44,7 @@ def deleteEvent(request, id):
         Event.objects.filter(id=id).delete()
     except ObjectDoesNotExist:
         print("Event does not exist")
+
+
     
     

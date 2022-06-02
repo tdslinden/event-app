@@ -26,7 +26,6 @@ def addEvent(request):
         print("invalid: ", serializer.errors)
     return Response(serializer.data)
 
-
 # get event 
 @api_view(['GET'])
 def getEventByID(request, id):

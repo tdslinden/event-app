@@ -1,6 +1,7 @@
 import React, { useEffect, useState, Component } from 'react';
-import { Text, View } from 'react-native';
-import { getAllEventObjects } from '../services/GetEventDetails';
+import { Text, View, TouchableOpacity } from 'react-native';
+import { getAllEventObjects } from '../services/EventServices';
+import styles from '../styles/testStyles';
 
 export default class EventTest extends Component {
     constructor(props) {
@@ -25,11 +26,20 @@ export default class EventTest extends Component {
             })
     }
 
+
     render() {
         return (
-            <View>
-                {this.state.events.map(event => (
-                    <Text>{event.name}</Text>
+            <View style={styles.container}>
+                {this.state.events.map((event) => (
+                    <TouchableOpacity 
+                        key={event.id.toString()}
+                        onPress={() => this.props.navigation.navigate('EventPage',{event: event})}
+                    >
+                        <Text>
+                        {event.name}
+                        </Text>
+                    </TouchableOpacity>
+
                 ))}
             </View>
         );

@@ -1,8 +1,8 @@
 import React from 'react';
 import { createAppContainer } from "react-navigation";
 import { createStackNavigator } from "react-navigation-stack";
-import EventTest from '../screens/EventTest';
-import EventPageTest from '../screens/EventPageTest';
+import EventTest from '../test-pages/EventTest';
+import EventPageTest from '../test-pages/EventPageTest';
 
 
 export default class StackNavigation extends React.Component {

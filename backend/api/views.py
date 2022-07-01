@@ -2,7 +2,7 @@
 from urllib import response
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
-from event.models.models import Event
+from event.models.event import Event
 from .serializers import EventSerializer
 from django.core.exceptions import ObjectDoesNotExist
 # from backend.api import serializers

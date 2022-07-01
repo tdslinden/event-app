@@ -1,10 +1,13 @@
 # Response object takes any python or serialized data and renders as JSON data
+from email.errors import NonASCIILocalPartDefect
 from urllib import response
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
 from event.models.event import Event
-from .serializers import EventSerializer
+from event.models.non_registered import NonRegisteredUser
+from .serializers import EventSerializer, NonRegisteredUserSerializer
 from django.core.exceptions import ObjectDoesNotExist
+
 # from backend.api import serializers
 
 @api_view(['GET'])
@@ -45,5 +48,18 @@ def deleteEvent(request, id):
         print("Event does not exist")
 
 
-    
-    
+@api_view(['GET'])
+def get_non_registered_users(request):
+    non_registered_users = NonRegisteredUser.objects.all()
+    serializers = NonRegisteredUserSerializer(non_registered_users, many=True)
+    return Response(serializers.data)
+
+@api_view(['POST'])
+def add_non_registered_user(request):
+    serializer = NonRegisteredUserSerializer(data=request.data)
+    if serializer.is_valid():
+        serializer.save()
+        print("saved")
+    else:
+        print("invalid: ", serializer.errors)
+    return Response(serializer.data)

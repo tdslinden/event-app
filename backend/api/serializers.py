@@ -1,7 +1,7 @@
 from dataclasses import fields
 from rest_framework import serializers
 from event.models.event import Event
-from event.models.event import NonRegisteredUser
+from event.models.non_registered import NonRegisteredUser
 
 class EventSerializer(serializers.ModelSerializer):
     class Meta:

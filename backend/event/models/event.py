@@ -14,3 +14,4 @@ class Event(models.Model):
     created = models.DateTimeField(auto_now_add=True)
     # TODO: guests = point to another table
     # TODO: hosts = point to another table
+    

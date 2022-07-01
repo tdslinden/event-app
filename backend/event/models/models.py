@@ -11,3 +11,5 @@ class Event(models.Model):
     end_time = models.TimeField()
     public = models.BooleanField(default=False)
     created = models.DateTimeField(auto_now_add=True)
+    # TODO: guests = point to another table
+    # TODO: hosts = point to another table

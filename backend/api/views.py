@@ -73,20 +73,3 @@ def add_non_registered_user(request):
     else:
         print("invalid: ", serializer.errors)
     return Response(serializer.data)
-
-
-#     @api_view(['POST'])
-# def add_non_registered_user(request, id):
-#     event_serializer = EventSerializer(Event.objects.get(id=id))
-#     event = Response(event_serializer.data)
-#     print(event)
-#     serializer = NonRegisteredUserSerializer(
-#         data=request.data,
-#         context={'event': event}
-#         )
-#     if serializer.is_valid():
-#         serializer.save()
-#         print("saved")
-#     else:
-#         print("invalid: ", serializer.errors)
-#     return Response(serializer.data)

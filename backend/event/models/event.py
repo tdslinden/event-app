@@ -1,6 +1,5 @@
 # Create your models here.
 from django.db import models
-from event.models.non_registered import NonRegisteredUser
 # import backend.settings
 
 class Event(models.Model):

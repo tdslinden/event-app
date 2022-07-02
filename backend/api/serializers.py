@@ -7,8 +7,9 @@ class EventSerializer(serializers.ModelSerializer):
     class Meta:
         model = Event
         fields = '__all__'
-
 class NonRegisteredUserSerializer(serializers.ModelSerializer):
     class Meta:
         model = NonRegisteredUser
         fields = '__all__'
+
+        

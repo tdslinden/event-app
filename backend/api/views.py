@@ -7,6 +7,8 @@ from event.models.event import Event
 from event.models.non_registered import NonRegisteredUser
 from .serializers import EventSerializer, NonRegisteredUserSerializer
 from django.core.exceptions import ObjectDoesNotExist
+from django.shortcuts import (get_list_or_404, HttpResponseRedirect)
+from django.http import Http404
 
 # from backend.api import serializers
 
@@ -43,7 +45,9 @@ def getEventByID(request, id):
 @api_view(['DELETE'])
 def deleteEvent(request, id):
     try:
+        get_list_or_404(Event, id=id)
         Event.objects.filter(id=id).delete()
+        return HttpResponseRedirect("/")
     except ObjectDoesNotExist:
         print("Event does not exist")
 

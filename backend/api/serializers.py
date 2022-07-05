@@ -1,7 +1,6 @@
 from dataclasses import fields
 from rest_framework import serializers
-from event.models.event import Event
-from event.models.user import User
+from event.models import Event, User
 
 class EventSerializer(serializers.ModelSerializer):
     class Meta:

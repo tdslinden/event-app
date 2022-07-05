@@ -2,8 +2,7 @@
 from urllib import response
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
-from event.models.event import Event
-from event.models.user import User
+from event.models import Event, User
 from .serializers import EventSerializer
 from .serializers import UserSerializer
 from django.core.exceptions import ObjectDoesNotExist

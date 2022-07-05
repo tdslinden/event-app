@@ -5,7 +5,6 @@ from rest_framework.decorators import api_view
 from event.models.event import Event
 from .serializers import EventSerializer
 from django.core.exceptions import ObjectDoesNotExist
-# from backend.api import serializers
 
 @api_view(['GET'])
 def getEvents(request):

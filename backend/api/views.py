@@ -48,4 +48,4 @@ def deleteEvent(request, id):
 def get_all_users(request):
     user = User.objects.all()
     serializer = UserSerializer(user, many=True)
-    return response(serializer.data)
+    return Response(serializer.data)

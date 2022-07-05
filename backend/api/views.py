@@ -2,10 +2,10 @@
 from urllib import response
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
-from event.models import Event
+from event.models import Event, User
 from .serializers import EventSerializer
+from .serializers import UserSerializer
 from django.core.exceptions import ObjectDoesNotExist
-# from backend.api import serializers
 
 @api_view(['GET'])
 def getEvents(request):
@@ -44,6 +44,8 @@ def deleteEvent(request, id):
     except ObjectDoesNotExist:
         print("Event does not exist")
 
-
-    
-    
+@api_view(['GET'])
+def get_all_users(request):
+    user = User.objects.all()
+    serializer = UserSerializer(user, many=True)
+    return Response(serializer.data)

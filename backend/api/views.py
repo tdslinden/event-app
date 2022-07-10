@@ -1,10 +1,15 @@
 # Response object takes any python or serialized data and renders as JSON data
+from email.errors import NonASCIILocalPartDefect
 from urllib import response
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
-from event.models import Event
-from .serializers import EventSerializer
+from event.models.event import Event
+from event.models.non_registered import NonRegisteredUser
+from .serializers import EventSerializer, NonRegisteredUserSerializer
 from django.core.exceptions import ObjectDoesNotExist
+from django.shortcuts import (get_list_or_404, HttpResponseRedirect)
+from django.http import Http404
+
 # from backend.api import serializers
 
 @api_view(['GET'])
@@ -40,10 +45,35 @@ def getEventByID(request, id):
 @api_view(['DELETE'])
 def deleteEvent(request, id):
     try:
+        get_list_or_404(Event, id=id)
         Event.objects.filter(id=id).delete()
+        return HttpResponseRedirect("/")
     except ObjectDoesNotExist:
         print("Event does not exist")
 
+# gets the non registered users connected to an event by event id
+@api_view(['GET'])
+def get_non_registered_users_by_event_id(request, id):
+    try:
+        event = Event.objects.get(id=id)
+        non_registered_users = event.nonregistereduser_set.all()
+        serializer = NonRegisteredUserSerializer(non_registered_users, many=True)
+        return Response(serializer.data)
+    except ObjectDoesNotExist:
+        print("non registered users or event does not exist")
 
-    
-    
+@api_view(['GET'])
+def get_non_registered_users(request):
+    non_registered_users = NonRegisteredUser.objects.all()
+    serializers = NonRegisteredUserSerializer(non_registered_users, many=True)
+    return Response(serializers.data)
+
+# adds a non registered user, must specify the event id
+@api_view(['POST'])
+def add_non_registered_user(request):
+    serializer = NonRegisteredUserSerializer(data=request.data)
+    if serializer.is_valid():
+        serializer.save()
+    else:
+        print("invalid: ", serializer.errors)
+    return Response(serializer.data)

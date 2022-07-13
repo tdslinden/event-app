@@ -1,6 +1,6 @@
 # Create your models here.
 from django.db import models
-# import backend.settings
+
 
 class Event(models.Model):
     name = models.CharField(max_length=200)

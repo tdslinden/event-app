@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
     'phonenumber_field',
     'rest_framework',
     'event',
@@ -96,6 +97,8 @@ DATABASES = {
     }
 }
 
+# override the default user model
+AUTH_USER_MODEL = 'event.RegisteredUser'
 
 # Password validation
 # https://docs.djangoproject.com/en/4.0/ref/settings/#auth-password-validators

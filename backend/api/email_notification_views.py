@@ -11,9 +11,10 @@ from email_notification.emails import get_emails_from_users
 from django.core.mail import BadHeaderError, send_mail, send_mass_mail
 from django.http import HttpResponse, HttpResponseRedirect
 from dotenv import load_dotenv
+import os
 
 load_dotenv()
-import os
+from_email = os.getenv('EMAIL_HOST_USER')
 
 @api_view(['GET'])
 def get_non_registered_user_emails(request, id):
@@ -30,7 +31,7 @@ def get_non_registered_user_emails(request, id):
 def test_send_email(request):
     subject = request.POST.get('subject', 'test')
     message = request.POST.get('message', 'test')
-    from_email = request.POST.get('from_email', 'testevent1337@gmail.com')
+    from_email = request.POST.get('from_email', os.getenv('EMAIL_HOST_USER'))
     print(subject, message, from_email)
     if subject and message and from_email:
         try:

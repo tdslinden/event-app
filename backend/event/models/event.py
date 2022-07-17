@@ -12,4 +12,5 @@ class Event(models.Model):
     public = models.BooleanField(default=False)
     created = models.DateTimeField(auto_now_add=True)
     # TODO: hosts = point to a user or table of users
+    # TODO: posts
     

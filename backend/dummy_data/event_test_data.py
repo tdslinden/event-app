@@ -1,4 +1,4 @@
-{
+mock_event = {
     "name": "fudu party 2",
     "description": "fudu only",
     "photo_link": "asd",

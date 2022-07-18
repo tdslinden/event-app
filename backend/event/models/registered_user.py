@@ -11,10 +11,10 @@ class RegisteredUser(AbstractBaseUser, PermissionsMixin):
         max_length=255,
         unique=True,
     )
-    first_name = models.CharField(max_length=150)
-    last_name = models.CharField(max_length=150)
-    date_of_birth = models.DateField()
-    phone_number = PhoneNumberField()
+    first_name = models.CharField(verbose_name='first name', max_length=150)
+    last_name = models.CharField(verbose_name='last name', max_length=150)
+    date_of_birth = models.DateField(verbose_name='date of birth')
+    phone_number = PhoneNumberField(verbose_name='phone number')
     is_active = models.BooleanField(default=True)
     is_staff = models.BooleanField(default=False)
     date_joined = models.DateTimeField(default=timezone.now)

@@ -13,7 +13,7 @@ class RegisteredUser(AbstractBaseUser, PermissionsMixin):
     )
     first_name = models.CharField(verbose_name='first name', max_length=150)
     last_name = models.CharField(verbose_name='last name', max_length=150)
-    date_of_birth = models.DateField(verbose_name='date of birth')
+    date_of_birth = models.DateField(verbose_name='date of birth', null=True)
     phone_number = PhoneNumberField(verbose_name='phone number')
     is_active = models.BooleanField(default=True)
     is_staff = models.BooleanField(default=False)

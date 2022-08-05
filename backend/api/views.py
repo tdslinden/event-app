@@ -1,17 +1,11 @@
 # Response object takes any python or serialized data and renders as JSON data
-from email.errors import NonASCIILocalPartDefect
-from urllib import response
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
-from event.models.event import Event
-from event.models.non_registered import NonRegisteredUser
-from event.models import RegisteredUser
+from event.models import Event, RegisteredUser, NonRegisteredUser
 from .serializers import EventSerializer, NonRegisteredUserSerializer, RegisteredUserSerializer
 from django.core.exceptions import ObjectDoesNotExist
 from django.shortcuts import (get_list_or_404, HttpResponseRedirect)
-from django.http import Http404
 
-# from backend.api import serializers
 
 @api_view(['GET'])
 def getEvents(request):

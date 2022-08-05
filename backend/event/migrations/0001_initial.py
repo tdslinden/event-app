@@ -30,17 +30,6 @@ class Migration(migrations.Migration):
             ],
         ),
         migrations.CreateModel(
-            name='NonRegisteredUser',
-            fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('first_name', models.CharField(max_length=255)),
-                ('last_name', models.CharField(max_length=255)),
-                ('email', models.EmailField(max_length=255)),
-                ('phone_number', phonenumber_field.modelfields.PhoneNumberField(max_length=128, region=None)),
-                ('event', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='event.event')),
-            ],
-        ),
-        migrations.CreateModel(
             name='RegisteredUser',
             fields=[
                 ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),

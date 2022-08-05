@@ -16,6 +16,7 @@ def getEvents(request):
     # outputs as JSON data
     return Response(serializer.data)
 
+
 @api_view(['POST'])
 def addEvent(request):
     serializer = EventSerializer(data=request.data)
@@ -26,7 +27,8 @@ def addEvent(request):
         print("invalid: ", serializer.errors)
     return Response(serializer.data)
 
-# get event 
+
+# get event
 @api_view(['GET'])
 def getEventByID(request, id):
     try:
@@ -35,6 +37,7 @@ def getEventByID(request, id):
         return Response(serializer.data)
     except ObjectDoesNotExist:
         print("Event does not exist")
+
 
 # delete event
 @api_view(['DELETE'])
@@ -53,6 +56,7 @@ def get_registered_users(request):
     serializers = RegisteredUserSerializer(registered_users, many=True)
     return Response(serializers.data)
 
+
 # gets the non registered users connected to an event by event id
 @api_view(['GET'])
 def get_non_registered_users_by_event_id(request, id):
@@ -64,11 +68,13 @@ def get_non_registered_users_by_event_id(request, id):
     except ObjectDoesNotExist:
         print("non registered users or event does not exist")
 
+
 @api_view(['GET'])
 def get_non_registered_users(request):
     non_registered_users = NonRegisteredUser.objects.all()
     serializers = NonRegisteredUserSerializer(non_registered_users, many=True)
     return Response(serializers.data)
+
 
 # adds a non registered user, must specify the event id
 @api_view(['POST'])

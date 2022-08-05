@@ -5,7 +5,8 @@ from rest_framework.response import Response
 from rest_framework.decorators import api_view
 from event.models.event import Event
 from event.models.non_registered import NonRegisteredUser
-from .serializers import EventSerializer, NonRegisteredUserSerializer
+from event.models import RegisteredUser
+from .serializers import EventSerializer, NonRegisteredUserSerializer, RegisteredUserSerializer
 from django.core.exceptions import ObjectDoesNotExist
 from django.shortcuts import (get_list_or_404, HttpResponseRedirect)
 from django.http import Http404
@@ -50,6 +51,13 @@ def deleteEvent(request, id):
         return HttpResponseRedirect("/")
     except ObjectDoesNotExist:
         print("Event does not exist")
+
+
+@api_view(['GET'])
+def get_registered_users(request):
+    registered_users = RegisteredUser.objects.all()
+    serializers = RegisteredUserSerializer(registered_users, many=True)
+    return Response(serializers.data)
 
 # gets the non registered users connected to an event by event id
 @api_view(['GET'])

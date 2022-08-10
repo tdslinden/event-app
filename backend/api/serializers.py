@@ -1,7 +1,5 @@
 from rest_framework import serializers
-# from event.models.event import Event
-from event.models.non_registered import NonRegisteredUser
-from event.models import RegisteredUser, Event
+from event.models import Event, RegisteredUser, NonRegisteredUser
 
 
 class EventSerializer(serializers.ModelSerializer):

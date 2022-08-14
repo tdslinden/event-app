@@ -1,6 +1,5 @@
-# Create your models here.
 from django.db import models
-# import backend.settings
+
 
 class Event(models.Model):
     name = models.CharField(max_length=200)
@@ -12,4 +11,6 @@ class Event(models.Model):
     public = models.BooleanField(default=False)
     created = models.DateTimeField(auto_now_add=True)
     # TODO: hosts = point to a user or table of users
-    
+
+    def __str__(self):
+        return self.name

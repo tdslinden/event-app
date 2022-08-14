@@ -29,7 +29,11 @@ class RegisteredUser(AbstractBaseUser, PermissionsMixin):
         db_table='user_going_events',
         related_name='going_users'
     )
-    # TODO past_events
+    attended_events = models.ManyToManyField(
+        Event,
+        db_table='user_attended_events',
+        related_name='attended_users'
+    )
     # TODO hosted_events
     # TODO invited_events
 

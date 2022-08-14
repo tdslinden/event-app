@@ -3,6 +3,7 @@ from django.utils import timezone
 from django.contrib.auth.models import AbstractBaseUser, PermissionsMixin
 from ..managers import MyUserManager
 from phonenumber_field.modelfields import PhoneNumberField
+from .event import Event
 
 
 class RegisteredUser(AbstractBaseUser, PermissionsMixin):
@@ -18,6 +19,19 @@ class RegisteredUser(AbstractBaseUser, PermissionsMixin):
     is_active = models.BooleanField(default=True)
     is_staff = models.BooleanField(default=False)
     date_joined = models.DateTimeField(default=timezone.now)
+    interested_events = models.ManyToManyField(
+        Event,
+        db_table='user_interested_events',
+        related_name='interested_users'
+    )
+    going_events = models.ManyToManyField(
+        Event,
+        db_table='user_going_events',
+        related_name='going_users'
+    )
+    # TODO past_events
+    # TODO hosted_events
+    # TODO invited_events
 
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = []

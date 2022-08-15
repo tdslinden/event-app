@@ -34,8 +34,16 @@ class RegisteredUser(AbstractBaseUser, PermissionsMixin):
         db_table='user_attended_events',
         related_name='attended_users'
     )
-    # TODO hosted_events
-    # TODO invited_events
+    hosted_events = models.ManyToManyField(
+        Event,
+        db_table='user_hosted_events',
+        related_name='hosting_users'
+    )
+    invited_events = models.ManyToManyField(
+        Event,
+        db_table='user_invited_events',
+        related_name='invited_users'
+    )
 
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = []

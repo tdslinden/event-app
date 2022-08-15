@@ -1,0 +1,59 @@
+- model: event.event
+  pk: 1
+  fields:
+    name: Isaac Is Turning 2
+    description: Birthday party for Isaac will be held at Elisa Steak House.
+    photo_link: google.com/images
+    date: 2023-01-01
+    start_time: "17:00"
+    end_time: "22:00"
+    public: false
+    created: 2022-12-01 19:01:18
+
+- model: event.event
+  pk: 2
+  fields:
+    name: Canada Day
+    description: Catch the Canada Day celebrations in downtown with us.
+    photo_link: google.com/images
+    date: 2023-07-01
+    start_time: "15:00"
+    end_time: "23:59"
+    public: true
+    created: 2023-03-15 20:01:18
+
+- model: event.event
+  pk: 3
+  fields:
+    name: Work Christmas Party
+    description: Don't forget your ugly christmas sweaters.
+    photo_link: google.com/images
+    date: 2023-12-10
+    start_time: "17:00"
+    end_time: "23:00"
+    public: false
+    created: 2023-11-15 21:01:18
+
+- model: event.event
+  pk: 4
+  fields:
+    name: Bryson's Baby Shower
+    description: Gifts are not mandatory for Bryson.
+    photo_link: google.com/images
+    date: 2023-08-14
+    start_time: "13:00"
+    end_time: "17:00"
+    public: false
+    created: 2023-06-14 22:01:18
+
+- model: event.event
+  pk: 5
+  fields:
+    name: Beach Day at White Pine
+    description: Bring food everyone!
+    photo_link: google.com/images
+    date: 2023-06-22
+    start_time: "10:00"
+    end_time: "16:00"
+    public: false
+    created: 2023-06-01 23:01:18

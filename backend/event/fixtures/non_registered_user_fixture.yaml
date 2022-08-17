@@ -1,0 +1,23 @@
+- model: event.nonregistereduser
+  pk: 1
+  fields:
+    first_name: John
+    last_name: Doe
+    email: johndoe@gmail.com
+    phone_number: 123-456-7890
+
+- model: event.nonregistereduser
+  pk: 2
+  fields:
+    first_name: Bryson
+    last_name: Tiller
+    email: btiller@gmail.com
+    phone_number: 123-456-9870
+
+- model: event.nonregistereduser
+  pk: 3
+  fields:
+    first_name: Kanye
+    last_name: West
+    email: yeezy@gmail.com
+    phone_number: 888-888-8888

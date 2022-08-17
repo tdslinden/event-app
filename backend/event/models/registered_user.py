@@ -21,27 +21,27 @@ class RegisteredUser(AbstractBaseUser, PermissionsMixin):
     date_joined = models.DateTimeField(default=timezone.now)
     interested_events = models.ManyToManyField(
         Event,
-        db_table='user_interested_events',
+        db_table='user_interested_event',
         related_name='interested_users'
     )
     going_events = models.ManyToManyField(
         Event,
-        db_table='user_going_events',
+        db_table='user_going_event',
         related_name='going_users'
     )
     attended_events = models.ManyToManyField(
         Event,
-        db_table='user_attended_events',
+        db_table='user_attended_event',
         related_name='attended_users'
     )
     hosted_events = models.ManyToManyField(
         Event,
-        db_table='user_hosted_events',
+        db_table='user_hosted_event',
         related_name='hosting_users'
     )
     invited_events = models.ManyToManyField(
         Event,
-        db_table='user_invited_events',
+        db_table='user_invited_event',
         related_name='invited_users'
     )
 

@@ -1,0 +1,50 @@
+- model: event.registereduser
+  pk: 1
+  fields:
+    email: barry@gmail.com
+    first_name: Barry
+    last_name: Allen
+    date_of_birth: "1988-12-12"
+    phone_number: 123-321-1234
+    is_active: true
+    is_staff: false
+    date_joined: "2022-08-16 12:30:00"
+    going_events: [3]
+    interested_events: [4]
+    invited_events: [5]
+    attended_events: [1]
+    hosted_events: [2]
+
+- model: event.registereduser
+  pk: 2
+  fields:
+    email: mamba@gmail.com
+    first_name: Kobe
+    last_name: Bryant
+    date_of_birth: "1978-08-23"
+    phone_number: 888-888-2424
+    is_active: true
+    is_staff: false
+    date_joined: "2022-08-20 12:30:00"
+    going_events: []
+    interested_events: [3, 4]
+    invited_events: [5]
+    attended_events: [1]
+    hosted_events: [2]
+
+- model: event.registereduser
+  pk: 3
+  fields:
+    email: mwahl@gmail.com
+    first_name: Mark
+    last_name: Wahlberg
+    date_of_birth: "1971-06-05"
+    phone_number: 123-456-1234
+    is_active: true
+    is_staff: false
+    date_joined: "2022-08-22 12:30:00"
+    going_events: [5]
+    interested_events: [3, 4]
+    invited_events: [2]
+    attended_events: [1]
+    hosted_events: []

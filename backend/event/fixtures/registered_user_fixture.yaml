@@ -9,6 +9,11 @@
     is_active: true
     is_staff: false
     date_joined: "2022-08-16 12:30:00"
+    going_events: [3]
+    interested_events: [4]
+    invited_events: [5]
+    attended_events: [1]
+    hosted_events: [2]
 
 - model: event.registereduser
   pk: 2
@@ -21,6 +26,11 @@
     is_active: true
     is_staff: false
     date_joined: "2022-08-20 12:30:00"
+    going_events: []
+    interested_events: [3, 4]
+    invited_events: [5]
+    attended_events: [1]
+    hosted_events: [2]
 
 - model: event.registereduser
   pk: 3
@@ -33,3 +43,8 @@
     is_active: true
     is_staff: false
     date_joined: "2022-08-22 12:30:00"
+    going_events: [5]
+    interested_events: [3, 4]
+    invited_events: [2]
+    attended_events: [1]
+    hosted_events: []

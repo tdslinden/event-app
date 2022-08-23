@@ -2,7 +2,7 @@ from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin
 
 from .forms import CustomUserCreationForm, CustomUserChangeForm
-from .models import RegisteredUser
+from .models import RegisteredUser, Event, EventImage
 
 
 # Register your models here.
@@ -29,3 +29,5 @@ class CustomUserAdmin(UserAdmin):
 
 
 admin.site.register(RegisteredUser, CustomUserAdmin)
+admin.site.register(Event)
+admin.site.register(EventImage)

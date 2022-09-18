@@ -8,7 +8,7 @@ from django.shortcuts import (get_list_or_404, HttpResponseRedirect)
 
 
 @api_view(['GET'])
-def getEvents(request):
+def get_events(request):
     events = Event.objects.all()
     # many to true because serializing multiple items
     # one item make it false
@@ -18,7 +18,7 @@ def getEvents(request):
 
 
 @api_view(['POST'])
-def addEvent(request):
+def add_event(request):
     serializer = EventSerializer(data=request.data)
     if serializer.is_valid():
         serializer.save()
@@ -29,7 +29,7 @@ def addEvent(request):
 
 
 @api_view(['GET'])
-def getEventByID(request, id):
+def get_event_by_id(request, id):
     try:
         event = Event.objects.get(id=id)
         serializer = EventSerializer(event)
@@ -39,7 +39,7 @@ def getEventByID(request, id):
 
 
 @api_view(['DELETE'])
-def deleteEvent(request, id):
+def delete_event(request, id):
     try:
         get_list_or_404(Event, id=id)
         Event.objects.filter(id=id).delete()

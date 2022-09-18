@@ -8,12 +8,9 @@ from django.shortcuts import (get_list_or_404, HttpResponseRedirect)
 
 
 @api_view(['GET'])
-def get_events(request):
+def get_events():
     events = Event.objects.all()
-    # many to true because serializing multiple items
-    # one item make it false
     serializer = EventSerializer(events, many=True)
-    # outputs as JSON data
     return Response(serializer.data)
 
 
@@ -29,9 +26,9 @@ def add_event(request):
 
 
 @api_view(['GET'])
-def get_event_by_id(request, id):
+def get_event_by_id(event_id):
     try:
-        event = Event.objects.get(id=id)
+        event = Event.objects.get(id=event_id)
         serializer = EventSerializer(event)
         return Response(serializer.data)
     except ObjectDoesNotExist:
@@ -39,26 +36,26 @@ def get_event_by_id(request, id):
 
 
 @api_view(['DELETE'])
-def delete_event(request, id):
+def delete_event(event_id):
     try:
-        get_list_or_404(Event, id=id)
-        Event.objects.filter(id=id).delete()
+        get_list_or_404(Event, id=event_id)
+        Event.objects.filter(id=event_id).delete()
         return HttpResponseRedirect("/")
     except ObjectDoesNotExist:
         print("Event does not exist")
 
 
 @api_view(['GET'])
-def get_registered_users(request):
+def get_registered_users():
     registered_users = RegisteredUser.objects.all()
     serializers = RegisteredUserSerializer(registered_users, many=True)
     return Response(serializers.data)
 
 
 @api_view(['GET'])
-def get_non_registered_users_by_event_id(request, id):
+def get_non_registered_users_by_event_id(event_id):
     try:
-        event = Event.objects.get(id=id)
+        event = Event.objects.get(id=event_id)
         non_registered_users = event.nonregistereduser_set.all()
         serializer = NonRegisteredUserSerializer(non_registered_users, many=True)
         return Response(serializer.data)
@@ -67,7 +64,7 @@ def get_non_registered_users_by_event_id(request, id):
 
 
 @api_view(['GET'])
-def get_non_registered_users(request):
+def get_non_registered_users():
     non_registered_users = NonRegisteredUser.objects.all()
     serializers = NonRegisteredUserSerializer(non_registered_users, many=True)
     return Response(serializers.data)
